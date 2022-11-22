@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<title>Login Page</title>
+
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/assets/css/custom.css">
+
+</head>
+<body>
+
+    <main>
+
+        <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+            <div class="row align-items-center g-lg-5 py-5">
+                <div class="col-lg-7 text-center text-lg-start">
+                    <!--<a href="https://www.freepik.com/free-vector/global-data-security-personal-data-security-cyber-data-security-online-concept-illustration-internet-security-information-privacy-protection_12953573.htm#query=login&position=24&from_view=search&track=sph">Image by jcomp</a> on Freepik -->
+                    <img src="../static/assets/images/Data_security_05.jpg" width="500" height="500">
+                </div>
+                <div class="col-md-10 mx-auto col-lg-5">
+
+                    <form method="post" action="" class="p-4 p-md-5 border rounded-3 bg-light">
+
+                        {{ form.hidden_tag() }}
+
+                        <p class="fw-bold">
+                            {% if msg %}
+                                {{ msg | safe }}
+                            {% else %}
+                                Add your credentials
+                            {% endif %}
+                        </p>
+
+                        <br />
+
+                        <div class="form-floating mb-3">
+                            {{ form.username(class="form-control", id="floatingInput") }}
+                            <label for="floatingInput">Username</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            {{ form.password(class="form-control", type="password") }}
+                            <label for="floatingPassword">Password</label>
+                        </div>
+                        <br />
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input type="checkbox" value="remember-me"> Remember me
+                            </label>
+                        </div>
+                        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign IN</button>
+                        <hr class="my-4">
+                        <small class="text-muted">
+                            Dont have an account? <a href="{{ url_for('register') }}" class="text-right">Register</a>
+                        </small>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+    </script>
+</body>
+</html>
