@@ -8,8 +8,8 @@
 
 ```bash
 $ # Clone the sources
-$ git clone 
-$ cd 
+$ git clone https://github.com/venkateshtantravahi/AuthenticatorApp.git
+$ cd AuthenticatorApp
 ```
 
 <br />
