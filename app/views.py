@@ -95,7 +95,8 @@ def index(path):
             return render_template('index.html', results=results, query=query)
 
         else:
-            return render_template('index.html', results=None, query=None)
+            results = Data.query.all()
+            return render_template('index.html', results=results, query=None)
 
     except TemplateNotFound:
         return render_template('page-404.html'), 404
