@@ -28,3 +28,24 @@ class Users(db.Model, UserMixin):
         db.session.commit()
 
         return self
+
+
+class Data(db.Model):
+
+    __tablename__ = 'Data'
+
+    id = db.Column(db.Integer, primary_key=True)
+    version = db.Column(db.String(12), unique=True)
+    status = db.Column(db.String(7))
+    error_code = db.Column(db.Integer)
+
+    def __init__(self, version, status, error_code):
+        self.version = version
+        self.status = status
+        self.error_code = error_code
+    
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+        return self

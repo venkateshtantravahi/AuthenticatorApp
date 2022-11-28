@@ -16,8 +16,8 @@
     <main>
 
         <div class="px-4 py-5 my-5 text-center">
-            <img class="d-block mx-auto mb-4" src="/static/assets/images/index.jpg" alt="" width="700" height="300">
             {% if not current_user.is_authenticated %}
+                <img class="d-block mx-auto mb-4" src="/static/assets/images/index.jpg" alt="" width="700" height="300">
                 <h1 class="display-5 fw-bold">Welcome!</h1>
             {% endif %}
             <div class="col-lg-6 mx-auto">
@@ -41,11 +41,28 @@
                     </div>
                     <br />
                     {% if results %}
-                        <h1>Search results for "{{ query }}":</h1>
-                        {{ results }}
+                        <table id="data" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Version</th>
+                                    <th>Status</th>
+                                    <th>Error Code</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in results %}
+                                    <tr>
+                                        <td>{{ row.id }}</td>
+                                        <td>{{ row.version }}</td>
+                                        <td>{{ row.status }}</td>
+                                        <td>{{ row.error_code }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                      </table>
                     {% endif %}
                 {% endif %}
-
                 <br />
 
 

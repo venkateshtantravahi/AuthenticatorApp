@@ -3,10 +3,11 @@ import os
 from flask import render_template, request, url_for, redirect, send_from_directory
 from flask_login import login_user, logout_user
 from jinja2 import TemplateNotFound
+import pandas as pd
 
 from . import app, lm, bc
 from app.forms import LoginForm, RegisterForm
-from app.models import Users
+from app.models import Users, Data
 
 
 @lm.user_loader
@@ -90,7 +91,7 @@ def index(path):
     try:
         query = request.args.get('search')
         if query:
-            results = Users.query.filter(Users.firstname.contains(query) | Users.lastname.contains(query)).all()
+            results =  Data.query.filter(Data.status.contains(query) | Data.error_code.contains(query)).all()
             return render_template('index.html', results=results, query=query)
 
         else:

@@ -23,6 +23,7 @@ lm.init_app(app)
 @app.before_first_request
 def initialize_database():
     db.create_all()
+    
 
 
 # Importing views and models from app
